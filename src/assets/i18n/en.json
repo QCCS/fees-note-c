@@ -1,0 +1,28 @@
+{
+    "menu": "Menu",
+    "home": "Home",
+    "navigate":"Navigate",
+    "categories":"Categories",
+    "cart":"Shopping Cart",
+    "wishlist":"Wishlist",
+    "about": "About",
+    "login": "Login",
+    "logout":"Logout",
+    "account":"Account",
+    "signup":"Signup",
+    "popular":"Popular Products",
+    "settings":"Settings",
+    "feedback":"Feedback",
+    "tabs":{
+      "index":"home",
+      "my":"ME",
+      "manage":"SETTINGS"
+    },
+    "side_meun":{
+      "TabWrapPage":"Tab Wrap Page",
+      "AccoutPage":"Accout Page",
+      "AboutPage":"About Page",
+      "HelpFeedbackPage":"Help Feedback Page",
+      "SoftPage":"Soft Page"
+  }
+}

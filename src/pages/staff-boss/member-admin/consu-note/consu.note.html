@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>消费记录</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar no-border-top class="header-fixed">
+    <ion-segment [(ngModel)]="consuType"  (ionChange)="consuTypeChange($event)">
+      <ion-segment-button value="consu">
+        购买记录
+      </ion-segment-button>
+      <ion-segment-button value="consuAdd">
+        充值记录
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div [ngSwitch]="consuType">
+
+    <ion-list *ngSwitchCase="'consu'">
+      <ion-item *ngFor="let item of orderList">
+        <h2>消费金额：{{item.receive_money}}</h2>
+        <!--<p>消费时间：{{item.create_time | date:'yyyy-MM-dd'}}</p>-->
+        <p>消费时间：{{item.create_time | date:"yyyy-mm-dd HH:mm:ss"}}</p>
+      </ion-item>
+      <ion-infinite-scroll (ionInfinite)="doInfiniteConsu($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="正在加载... ...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+      <div class="align-center">{{orderTotal}}</div>
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'consuAdd'">
+      <ion-item  *ngFor="let item of rechargeList">
+        <h2>充值金额：{{item.money}}</h2>
+        <p>消费时间：{{item.create_time | date:"yyyy-mm-dd HH:mm:ss"}}</p>
+      </ion-item>
+      <ion-infinite-scroll (ionInfinite)="doInfiniteConsuAdd($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="正在加载... ...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+      <div class="align-center">{{rechargeTotal}}</div>
+    </ion-list>
+
+  </div>
+
+</ion-content>

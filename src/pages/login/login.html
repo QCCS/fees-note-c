@@ -1,0 +1,26 @@
+<ion-content >
+  <div class="image-wrap">
+    <img src="assets/imgs/login-page.jpg" />
+  </div>
+
+  <div padding>
+    <ion-list>
+      <ion-item class="ion-item-no-padding">
+        <ion-label floating>手机号</ion-label>
+        <ion-input type="text" [(ngModel)]="mobile" clearInput></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-item-no-padding">
+        <ion-label floating>密码</ion-label>
+        <ion-input type="password" [(ngModel)]="password" clearInput></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div padding-top>
+      <div class="tips align-center" *ngIf="account_msg">{{account_msg}}</div>
+      <button ion-button full (click)="login()" [disabled]="mobile == '' || password == ''">登陆</button>
+      <button ion-button full color="light" (click)="sign()" clear>注册</button>
+    </div>
+  </div>
+
+</ion-content>

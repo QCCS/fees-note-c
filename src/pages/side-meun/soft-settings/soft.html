@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>软件设置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item (click)="doColorRadio()">
+      <ion-icon name="color-wand" item-left></ion-icon>
+      皮肤
+      <ion-note item-end>
+        {{SoftColor}}
+      </ion-note>
+    </button>
+    <button ion-item (click)="doLangRadio()">
+      <ion-icon name="build" item-left></ion-icon>
+      语言
+      <ion-note item-end>
+        {{SoftLang}}
+      </ion-note>
+    </button>
+  </ion-list>
+</ion-content>

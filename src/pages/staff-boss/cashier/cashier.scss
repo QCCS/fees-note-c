@@ -1,0 +1,47 @@
+page-cashier {
+
+  .empty-show{
+    padding-top: 60px;
+    font-size: 80px;
+    .empty-show-text{
+      font-size: 28px;
+      color:  #eee
+    }
+  }
+  .good-title{
+    height: 24px;
+  }
+  .good-costnum{
+    height: 24px;
+  }
+  .good-action{
+    height: 32px;
+    line-height: 32px;
+  }
+  .good-action-icon{
+    line-height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .good-action-icon-add{
+    padding-right: 0px;
+  }
+  .costnum-input{
+    height: 32px;
+    line-height: 32px;
+    width: 80px;
+  }
+  .costnum-input{
+    border: solid 1px #eee;
+    text-align: center;
+  }
+  .header-fixed{
+    position: fixed;
+    width: 100%;
+    z-index: 9;
+  }
+  .footer-fixed{
+    position: fixed;
+    border-bottom: 0px;
+  }
+}

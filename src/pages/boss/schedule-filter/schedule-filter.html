@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">取消</button>
+    </ion-buttons>
+
+    <ion-title>
+      选择过滤
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="applyFilters()" strong>确定</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="outer-content">
+
+  <ion-list>
+    <ion-item>
+      <span item-start class="dot"></span>
+      <ion-label>积分商品</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="point"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <span item-start class="dot"></span>
+      <ion-label>销售商品</ion-label>
+      <ion-toggle color="secondary" [(ngModel)]="sale" ></ion-toggle>
+    </ion-item>
+
+    <!--<ion-item>-->
+      <!--<span item-start class="dot"></span>-->
+      <!--<ion-label>价格小于100</ion-label>-->
+      <!--<ion-toggle color="secondary"></ion-toggle>-->
+    <!--</ion-item>-->
+
+    <!--<ion-item>-->
+      <!--<span item-start class="dot"></span>-->
+      <!--<ion-label>价格大约100</ion-label>-->
+      <!--<ion-toggle color="secondary"></ion-toggle>-->
+    <!--</ion-item>-->
+
+  </ion-list>
+
+  <ion-list>
+    <button ion-item (click)="resetFilters()" detail-none class="reset-filters">
+      重置所有
+    </button>
+  </ion-list>
+
+</ion-content>

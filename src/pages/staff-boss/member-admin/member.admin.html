@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>会员管理</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addMemberDetail()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="header-fixed">
+    <ion-searchbar [(ngModel)]="myInputSearch"
+                   [showCancelButton]="false"
+                   (ionInput)="onInputSearchbar($event)"
+                   (ionCancel)="onCancelSearchbar($event)"></ion-searchbar>
+  </div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+  <ion-list>
+    <div *ngFor="let member of list">
+      <ion-card>
+        <ion-card-header>
+          <div class="f-left"> {{member.name}}</div>
+          <div class="f-right"><ion-icon name="call" item-start></ion-icon> {{member.mobile}}</div>
+
+        </ion-card-header>
+
+        <ion-list>
+          <button ion-item (click)="$event.stopPropagation();consuNote(member)">
+            <ion-icon name="paw" item-start></ion-icon>
+            消费记录
+          </button>
+
+          <button ion-item (click)="goToMemberDetail(member)">
+            <ion-icon name="cafe" item-start></ion-icon>
+            会员详情
+          </button>
+        </ion-list>
+      </ion-card>
+    </div>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="正在加载... ...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-list>
+  <div class="align-center">共：{{total}}</div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+</ion-content>
+
+  <!--<ion-item-sliding (click)="goToMemberDetail(member)" *ngFor="let member of list"  class="member-item">-->
+
+    <!--<ion-card>-->
+      <!--<ion-card-header>-->
+        <!--{{member.name}}-->
+      <!--</ion-card-header>-->
+
+      <!--<ion-list>-->
+        <!--<button ion-item>-->
+          <!--<ion-icon name="call" item-start></ion-icon>-->
+          <!--{{member.mobile}}-->
+        <!--</button>-->
+
+        <!--<button ion-item (click)="$event.stopPropagation();consuNote(member)">-->
+          <!--<ion-icon name="cafe" item-start></ion-icon>-->
+          <!--消费记录-->
+        <!--</button>-->
+
+        <!--<button ion-item (click)="goToMemberDetail(member)">-->
+          <!--<ion-icon name="paw" item-start></ion-icon>-->
+          <!--会员信息-->
+        <!--</button>-->
+
+      <!--</ion-list>-->
+    <!--</ion-card>-->
+    <!--<ion-item-options>-->
+      <!--<button ion-button color="danger"-->
+              <!--(click)="$event.stopPropagation();deleteMember(member)">-->
+        <!--<ion-icon name="trash"></ion-icon>-->
+        <!--删除-->
+      <!--</button>-->
+    <!--</ion-item-options>-->
+  <!--</ion-item-sliding>-->
+
+

@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list>
+
+    <ion-card>
+      <ion-card-content class="align-center goods-img-wrap" style="height: 180px" (click)="selectImage()">
+        <ion-icon name="image" style="color: #488aff;font-size: 150px" *ngIf="goods.thumb==''"></ion-icon>
+        <img [src]="goods.thumb" style="height: 100%;width: auto;display: inline;" />
+      </ion-card-content>
+    </ion-card>
+
+    <div padding>
+      <button ion-button full (click)="getPicture(0)">相册</button>
+      <button ion-button full (click)="getPicture(1)">拍照</button>
+    </div>
+
+    <ion-item>
+      <ion-label floating>商品名称</ion-label>
+      <ion-input type="text" [(ngModel)]="goods.name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>二维码</ion-label>
+      <ion-input type="text" [(ngModel)]="goods.sn"></ion-input>
+      <button ion-button item-end (click)="scanGoods()">
+        <span class="button-inner">扫码</span>
+      </button>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>进价(元)</ion-label>
+      <ion-input type="number" [(ngModel)]="goods.cost_price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>售价(元)</ion-label>
+      <ion-input type="number" [(ngModel)]="goods.price"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>数量(个)</ion-label>
+      <ion-input type="number" [(ngModel)]="goods.count"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>提成(元)</ion-label>
+      <ion-input type="number" [(ngModel)]="goods.deduct"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>积分商品</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>所需积分</ion-label>
+      <ion-textarea [(ngModel)]="goods.score"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>备注</ion-label>
+      <ion-textarea [(ngModel)]="goods.remark"></ion-textarea>
+    </ion-item>
+
+
+
+  </ion-list>
+  <div padding>
+    <button ion-button full (click)="saveGoods()">保存</button>
+    <button ion-button full (click)="cancelSaveGoods()">取消</button>
+  </div>
+  <div padding-bottom></div>
+
+</ion-content>

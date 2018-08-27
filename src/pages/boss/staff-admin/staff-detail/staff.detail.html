@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list>
+    <ion-card>
+      <ion-card-content class="align-center user-img-wrap" style="height: 180px" (click)="selectImage()">
+        <ion-icon name="image" style="color: #488aff;font-size: 150px" *ngIf="user.avatar==''"></ion-icon>
+        <img [src]="user.avatar" style="height: 100%;width: auto;display: inline;" />
+      </ion-card-content>
+    </ion-card>
+
+    <div padding>
+      <button ion-button full (click)="getPicture(0)">相册</button>
+      <button ion-button full (click)="getPicture(1)">拍照</button>
+    </div>
+
+    <ion-item>
+      <ion-label floating>员工名称</ion-label>
+      <ion-input type="text" [(ngModel)]="user.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>电话</ion-label>
+      <ion-input type="text" [(ngModel)]="user.mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>密码</ion-label>
+      <ion-input type="text" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+
+    <!--<ion-item>-->
+      <!--<ion-label floating>备注</ion-label>-->
+      <!--<ion-textarea></ion-textarea>-->
+    <!--</ion-item>-->
+  </ion-list>
+  <div padding>
+    <button ion-button full (click)="saveUser()">保存</button>
+    <button ion-button full (click)="cancelSaveUser()">取消</button>
+  </div>
+
+  <div padding-bottom></div>
+
+</ion-content>

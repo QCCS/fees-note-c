@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>店铺设置</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      会员级别
+      <button ion-button item-end (click)="addMemberLevel()">添加</button>
+    </ion-list-header>
+
+    <button ion-item
+            *ngFor="let member of memberList"
+            (click)="editMemberLevel(member)"
+    >
+      <ion-icon name="star" item-start color="primary"></ion-icon>
+      <ion-label>{{member.title}} &nbsp;&nbsp;&nbsp;&nbsp;满{{member.upgrade_money}}</ion-label>
+      <ion-note item-end>{{member.discount}}折</ion-note>
+    </button>
+  </ion-list>
+
+
+  <!--<ion-list>-->
+    <!--<ion-list-header>-->
+      <!--会员设置-->
+    <!--</ion-list-header>-->
+
+    <!--<button ion-item (click)="editMemberSettings('充值金额','save_count')">-->
+      <!--<ion-icon name="logo-bitcoin" item-start color="primary"></ion-icon>-->
+      <!--<ion-label>充值金额</ion-label>-->
+      <!--<ion-note item-end>{{memberSettings.save_count}}</ion-note>-->
+    <!--</button>-->
+    <!--<button ion-item (click)="editMemberSettings('赠送金额','give_count')">-->
+      <!--<ion-icon name="logo-bitcoin" item-start color="primary"></ion-icon>-->
+      <!--<ion-label>赠送金额</ion-label>-->
+      <!--<ion-note item-end>{{memberSettings.give_count}}</ion-note>-->
+    <!--</button>-->
+    <!--<button ion-item (click)="editMemberSettings('赠送积分','give_score')">-->
+      <!--<ion-icon name="logo-bitcoin" item-start color="primary"></ion-icon>-->
+      <!--<ion-label>赠送积分</ion-label>-->
+      <!--<ion-note item-end>{{memberSettings.give_score}}</ion-note>-->
+    <!--</button>-->
+    <!--<div padding></div>-->
+    <!--<div padding></div>-->
+  <!--</ion-list>-->
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--<ion-list radio-group>-->
+    <!--<ion-list-header>-->
+      <!--系统参数-->
+    <!--</ion-list-header>-->
+    <!--<ion-item>-->
+      <!--<ion-label color="dark">Always</ion-label>-->
+      <!--<ion-radio value="always" checked></ion-radio>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+      <!--<ion-label color="dark">Only while phone is locked</ion-label>-->
+      <!--<ion-radio value="locked"></ion-radio>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+  <!--<ion-list>-->
+    <!--<ion-list-header>-->
+      <!--Apps Installed-->
+    <!--</ion-list-header>-->
+    <!--<ion-item>-->
+      <!--<ion-icon name="ionic" item-start color="primary"></ion-icon>-->
+      <!--<ion-label>Ionic View</ion-label>-->
+      <!--<button ion-button outline item-end>Uninstall</button>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+      <!--<ion-icon name="brush" item-start color="primary"></ion-icon>-->
+      <!--<ion-label>Ionic Creator</ion-label>-->
+      <!--<button ion-button outline item-end>Uninstall</button>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+      <!--<ion-icon name="logo-octocat" item-start color="dark"></ion-icon>-->
+      <!--<ion-label>Hubstruck</ion-label>-->
+      <!--<button ion-button outline item-end>Uninstall</button>-->
+    <!--</ion-item>-->
+    <!--<ion-item>-->
+      <!--<ion-icon name="paw" item-start color="danger"></ion-icon>-->
+      <!--<ion-label>Barkpark</ion-label>-->
+      <!--<button ion-button outline item-end>Uninstall</button>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+</ion-content>

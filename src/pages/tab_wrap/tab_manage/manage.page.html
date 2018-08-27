@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>管理</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid class="home-grid">
+    <ion-row>
+      <ion-col col-6 *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-card>
+          <ion-card-content class="home-icon-wrap">
+            <ion-icon name={{p.icon}} class="home-icon"></ion-icon>
+          </ion-card-content>
+          <div class="home-icon-text">
+            {{p.title}}
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

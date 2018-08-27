@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+    <ion-buttons end *ngIf="action == 'update'">
+      <button ion-button icon-only (click)="deleteMember(member)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list>
+
+    <div>
+      <h1 class="align-center">
+        余额：{{member.balance}}
+      </h1>
+      <div padding>
+        <button ion-button full (click)="memberRecharge()">充值</button>
+      </div>
+    </div>
+
+    <!--<ion-card>-->
+      <!--<ion-card-content class="align-center member-img-wrap"-->
+                        <!--style="height: 180px"-->
+                        <!--(click)="selectImage()">-->
+        <!--<ion-icon name="image" style="color: #488aff;font-size: 150px" *ngIf="member.thumb==''"></ion-icon>-->
+        <!--<img [src]="member.thumb" style="height: 100%;width: auto;display: inline;" />-->
+      <!--</ion-card-content>-->
+    <!--</ion-card>-->
+
+    <!--<div padding>-->
+      <!--<button ion-button full (click)="getPicture(0)">相册</button>-->
+      <!--<button ion-button full (click)="getPicture(1)">拍照</button>-->
+    <!--</div>-->
+
+    <ion-item>
+      <ion-label floating>会员名称</ion-label>
+      <ion-input type="text" [(ngModel)]="member.name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>会员电话</ion-label>
+      <ion-input type="number" [(ngModel)]="member.mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>会员积分</ion-label>
+      <ion-input type="number" [(ngModel)]="member.score"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>会员生日</ion-label>
+      <ion-datetime displayFormat="YYYY-MM-DD "
+                    cancelText='取消'
+                    doneText='确定'
+                    [(ngModel)]="member.birthday">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>会员级别</ion-label>
+      <ion-select [(ngModel)]="member.level_id"
+                  interface="popover"
+                  cancelText="取消"
+                  okText="确定">
+        <ion-option [value]="member.id"
+                    *ngFor="let member of memberLeveList">
+          {{member.title}}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>推荐人</ion-label>
+      <ion-input disabled [(ngModel)]="fromMember.name"></ion-input>
+      <ion-input disabled [(ngModel)]="fromMember.mobile"></ion-input>
+    </ion-item>
+    <div padding>
+      <button ion-button full  (click)="getFromMember()">选取推荐人</button>
+    </div>
+
+    <ion-item>
+      <ion-label floating>备注</ion-label>
+      <ion-textarea [(ngModel)]="member.remark"></ion-textarea>
+    </ion-item>
+
+    <!--<ion-item>-->
+    <!--<ion-label>存放小时</ion-label>-->
+    <!--<ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>-->
+    <!--</ion-item>-->
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button full (click)="saveMember()">保存</button>
+    <button ion-button full (click)="cancelSaveMember()">取消</button>
+  </div>
+
+  <div padding-bottom></div>
+
+
+</ion-content>

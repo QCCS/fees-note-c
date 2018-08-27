@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>收银台</ion-title>
+
+    <ion-buttons end>
+      <button ion-button (click)="scanGood()">
+        <ion-icon name="qr-scanner"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="header-fixed" *ngIf="list.length > 0">
+    <ion-navbar>
+
+      <ion-buttons>
+        <button ion-button color="white" clear icon-only start>
+          <ion-icon name='barcode' is-active="false"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button color="white" clear icon-only>
+          <span >合计：{{total}} 元</span>
+        </button>
+      </ion-buttons>
+
+    </ion-navbar>
+  </div>
+
+
+  <!--<ion-footer class="header-fixed" *ngIf="list.length > 0">-->
+    <!--<ion-navbar>-->
+
+      <!--<ion-buttons>-->
+        <!--<button ion-button color="white" clear icon-only start>-->
+          <!--<ion-icon name='barcode' is-active="false"></ion-icon>-->
+        <!--</button>-->
+      <!--</ion-buttons>-->
+      <!--<ion-buttons end>-->
+        <!--<button ion-button color="white" clear icon-only>-->
+          <!--<span >合计：{{total}} 元</span>-->
+        <!--</button>-->
+      <!--</ion-buttons>-->
+
+    <!--</ion-navbar>-->
+  <!--</ion-footer>-->
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <!--<ion-fab center bottom>-->
+    <!--<button ion-fab (click)="getItems()"><ion-icon name="add"></ion-icon></button>-->
+  <!--</ion-fab>-->
+
+  <div *ngIf="list.length == 0" class="align-center empty-show">
+    <ion-icon name='barcode' color="d1"></ion-icon>
+    <h4 class="empty-show-text">请添加商品</h4>
+  </div>
+
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let good of list;let i = index"  class="member-item">
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="good.thumb" onerror="this.src='assets/imgs/logo.png'">
+        </ion-avatar>
+        <h2 class="good-title">
+          <span class="f-left">{{good.name}}</span>
+          <span class="f-right">{{good.price * good.cost_num | yuantofen}}</span>
+        </h2>
+        <h3 class="good-costnum">
+          <span> 单价：{{good.price | yuantofen}}</span>
+
+        </h3>
+        <div class="good-action">
+          <ion-icon name="add"
+                    (click)="$event.stopPropagation();addGoodCount(good,i)"
+                    class="f-right good-action-icon good-action-icon-add"
+                    style="color:green"></ion-icon>
+          <input type="number"
+                 (focus)="cost_numFocus($event,good)"
+                 (blur)="cost_numBlur($event,good)"
+                 (ngModelChange)="cost_numChange($event,good)"
+                 [ngModel]="good.cost_num"
+                 class="costnum-input f-right">
+          <ion-icon name="remove"
+                    (click)="$event.stopPropagation();minGoodCount(good,i)"
+                    class="f-right good-action-icon"
+                    style="color:green"></ion-icon>
+        </div>
+
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="$event.stopPropagation();deleteGood(good,i)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+
+  <ion-footer class="footer-fixed" *ngIf="footerFixed">
+    <ion-toolbar>
+
+      <ion-buttons (click)="getItems()" >
+        <button ion-button color="white" clear icon-only start>
+          <ion-icon name='add'></ion-icon>
+          添加商品
+        </button>
+      </ion-buttons>
+
+      <ion-buttons *ngIf="total > 0" end (click)="payOrder()">
+        <button ion-button icon-right color="royal">
+          去结账
+          <ion-icon name="send"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>

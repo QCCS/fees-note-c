@@ -1,0 +1,56 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>确认账单</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+  <h1 class="align-center">商品类型：{{list.length}}个</h1>
+  <h1 class="align-center">总价：{{total}} 元</h1>
+  <h1 class="align-center" *ngIf="member.id">折后价：{{discountTotal}} 元</h1>
+  <h1 class="align-center" *ngIf="member.id">余额：{{member.balance}} 元</h1>
+
+  <!--// *ngIf="member.balance >= member.discount * total"-->
+  <div padding *ngIf="member.id"g>
+    <button  *ngIf=" member.balance >= member.discount * total"
+             ion-button block color="blue" (click)="balancePay()" >余额结账</button>
+  </div>
+
+  <div padding>
+    <button ion-button block color="blue" (click)="priceMerger()">一键抹零</button>
+  </div>
+
+  <div padding>
+    <button ion-button block color="blue" (click)="cashPay()" >现金结账</button>
+    <button ion-button block color="blue" (click)="searchMember()" >查找会员</button>
+    <button ion-button block color="blue" (click)="goToMember()" >添加会员</button>
+  </div>
+
+
+  <p padding class="align-center">保存的 <b>未支付</b> 订单，可以在 <b>我的订单</b> 中去完成支付</p>
+
+
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+  <ion-footer class="footer-fixed">
+    <ion-toolbar>
+
+      <ion-buttons>
+        <button end ion-button (click)="backCashier()" >返回</button>
+      </ion-buttons>
+
+      <ion-buttons end>
+        <button end ion-button (click)="payOverGoHome()" >仅保存订单</button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>

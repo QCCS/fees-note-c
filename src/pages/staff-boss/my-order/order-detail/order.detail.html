@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+
+    <ion-card>
+      <ion-card-header>
+        <ion-item *ngIf="order.state == 0">
+          <ion-label> 未支付</ion-label>
+          <ion-toggle checked="false" [(ngModel)]="order.status" (ngModelChange)="orderStateChange(order)"></ion-toggle>
+        </ion-item>
+        <ion-item *ngIf="order.state == 1">
+          <ion-label> 已经支付</ion-label>
+          <ion-toggle disabled checked="true"></ion-toggle>
+        </ion-item>
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item>
+          <ion-icon name="logo-bitcoin" item-start></ion-icon>
+          <h2>支付金额</h2>
+          <span item-end class="for-text">{{order.receive_money}}元</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="logo-bitcoin" item-start></ion-icon>
+          <h2>价格</h2>
+          <span item-end class="for-text">{{order.total_price}}元</span>
+        </button>
+        <button ion-item>
+          <ion-icon name="calendar" item-start></ion-icon>
+          <h2>日期</h2>
+          <span item-end>
+            {{order.create_time | date:"yyyy-mm-dd HH:mm:ss"}}
+          </span>
+        </button>
+      </ion-list>
+    </ion-card>
+
+
+    <ion-item *ngFor="let good of order.order_goods"   class="member-item">
+      <ion-avatar item-start>
+        <img [src]="good.thumb" onerror="this.src='assets/imgs/logo.png'">
+      </ion-avatar>
+      <h2>{{good.goods_name}}</h2>
+      <h3>
+        售价：{{good.goods_price | yuantofen}} &nbsp;&nbsp;&nbsp;
+      </h3>
+      <p>
+        数量：{{good.count}}&nbsp;&nbsp;&nbsp;
+      </p>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding-bottom></div>
+
+</ion-content>

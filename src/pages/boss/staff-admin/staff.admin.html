@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>员工管理</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-searchbar [(ngModel)]="myInputSearch"
+                   [showCancelButton]="false"
+                   (ionInput)="onInputSearchbar($event)"
+                   (ionCancel)="onCancelSearchbar($event)"></ion-searchbar>
+  </div>
+
+
+  <ion-fab center bottom>
+    <button ion-fab (click)="addUserDetail()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+  <div padding-top></div>
+
+  <ion-list>
+
+    <div *ngFor="let user of list">
+      <ion-card class="use-item">
+        <ion-list>
+          <button ion-item  (click)="goToUserDetail(user)">
+            <ion-icon name="call" item-start></ion-icon>
+            {{user.username}}:{{user.mobile}}
+          </button>
+        </ion-list>
+      </ion-card>
+    </div>
+
+
+
+    <!--<ion-item-sliding *ngFor="let user of list"  class="member-item">-->
+      <!--<ion-item>-->
+        <!--<button ion-item  (click)="goToUserDetail(user)">-->
+          <!--<ion-icon name="call" item-start></ion-icon>-->
+          <!--{{user.username}}:{{user.mobile}}-->
+        <!--</button>-->
+      <!--</ion-item>-->
+      <!--<ion-item-options>-->
+        <!--<button ion-button color="danger" (click)="$event.stopPropagation();deleteUser(user)">-->
+          <!--<ion-icon name="trash"></ion-icon>-->
+          <!--Delete-->
+        <!--</button>-->
+      <!--</ion-item-options>-->
+    <!--</ion-item-sliding>-->
+
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="正在加载... ...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </ion-list>
+  <div class="align-center">共：{{total}}</div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+
+</ion-content>

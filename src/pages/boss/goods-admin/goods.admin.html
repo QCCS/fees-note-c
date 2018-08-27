@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <!--<ion-title>商品管理</ion-title>-->
+
+    <ion-segment [(ngModel)]="order" (ionChange)="orderByTime($event)">
+      <ion-segment-button value="0" >
+        时间顺序
+      </ion-segment-button>
+      <ion-segment-button value="1">
+        价格倒序
+      </ion-segment-button>
+    </ion-segment>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="presentFilter()">
+        <ion-icon ios="ios-options-outline" md="md-options"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="header-fixed">
+    <ion-searchbar [(ngModel)]="myInputSearch"
+                   [showCancelButton]="false"
+                   (ionInput)="onInputSearchbar($event)"
+                   (ionCancel)="onCancelSearchbar($event)"></ion-searchbar>
+  </div>
+
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="addGoodsDetail()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+  <ion-list>
+
+
+    <ion-item-sliding (click)="goToGoodsDetail(good)" *ngFor="let good of list"  class="member-item">
+      <ion-item>
+        <ion-avatar item-start>
+          <img [src]="good.thumb" onerror="this.src='assets/imgs/logo.png'">
+        </ion-avatar>
+        <h2>{{good.name}}</h2>
+        <h3>
+          售价：{{good.price | yuantofen}} &nbsp;&nbsp;&nbsp;
+          <!--进价：{{good.cost_price | yuantofen}}-->
+        </h3>
+        <p>
+          <!--提成：{{good.deduct | yuantofen}} &nbsp;&nbsp;&nbsp;-->
+          数量：{{good.count}}&nbsp;&nbsp;&nbsp;
+        </p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="$event.stopPropagation();deleteGood(good)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="正在加载... ...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <!--<ion-item-sliding (click)="goToGoodsDetail()"  class="member-item">-->
+      <!--<ion-item>-->
+        <!--<ion-avatar item-start>-->
+          <!--<img src="assets/imgs/logo.png">-->
+        <!--</ion-avatar>-->
+        <!--<h2>商品名称</h2>-->
+        <!--<h3>价格：17889999</h3>-->
+        <!--<p>I've 其他信息 a pretty messed up day. If we just...</p>-->
+      <!--</ion-item>-->
+
+      <!--<ion-item-options>-->
+        <!--<button ion-button color="danger" (click)="removeItem()">-->
+          <!--<ion-icon name="trash"></ion-icon>-->
+          <!--Delete-->
+        <!--</button>-->
+      <!--</ion-item-options>-->
+    <!--</ion-item-sliding>-->
+
+  </ion-list>
+  <div class="align-center">共：{{total}}</div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+</ion-content>

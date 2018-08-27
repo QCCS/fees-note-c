@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>我的</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="top-card-wrap">
+    <ion-card class="top-card">
+      <img src="assets/imgs/timg.jpg"/>
+      <div class="top-card-text">
+        <h1 class="card-title">10000</h1>
+        <div class="card-subtitle">销售总额</div>
+      </div>
+
+    </ion-card>
+  </div>
+
+  <ion-grid class="home-grid">
+    <ion-row>
+      <ion-col col-6 *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-card>
+          <ion-card-content class="home-icon-wrap">
+            <ion-icon name={{p.icon}} class="home-icon"></ion-icon>
+          </ion-card-content>
+          <div class="home-icon-text">
+            {{p.title}}
+          </div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

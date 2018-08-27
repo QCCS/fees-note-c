@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      请选择
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-item>
+    <ion-label floating>请输入会员手机号</ion-label>
+    <ion-input type="text" [(ngModel)]="memberMoblie"></ion-input>
+  </ion-item>
+
+  <div padding>
+    <button ion-button full (click)="searchMember()">查找会员</button>
+    <button *ngIf="!member.id" ion-button block color="blue" (click)="goToMember()" >添加会员</button>
+  </div>
+
+  <div *ngIf="member.id">
+    <ion-card>
+
+      <ion-card-header>
+        {{member.name}}
+      </ion-card-header>
+
+      <ion-list>
+        <button ion-item color="blue" (click)="goToMemberBalance(member)">
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>会员充值</h2>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="logo-bitcoin" item-start></ion-icon>
+          <h2>余额</h2>
+          <span item-end class="for-text">{{member.balance}}元</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>电话</h2>
+          <span item-end class="for-text">{{member.mobile}}</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>享受折扣</h2>
+          <span item-end class="for-text">{{member.discount}}</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>积分</h2>
+          <span item-end class="for-text">{{member.score}}</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>等级</h2>
+          <span item-end class="for-text">{{member.level_title}}</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>生日</h2>
+          <span item-end class="for-text">{{member.birthday | date :'yyyy-mm-dd'}}</span>
+        </button>
+
+        <button ion-item>
+          <ion-icon name="call" item-start></ion-icon>
+          <h2>备注</h2>
+          <span item-end class="for-text">{{member.remark}}</span>
+        </button>
+
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+  <ion-footer  class="footer-fixed">
+    <ion-toolbar>
+
+      <ion-buttons>
+        <button end ion-button (click)="dismiss()" >取消</button>
+      </ion-buttons>
+
+      <ion-buttons end>
+        <button end ion-button (click)="conform()" >确定</button>
+      </ion-buttons>
+
+    </ion-toolbar>
+  </ion-footer>
+
+
+</ion-content>
+  <!--<h4>原价:{{originPrice}}</h4>-->
+  <!--<h4>折后价:{{targetPrice}}</h4>-->
+  <!--下面是一些滑动条-->
+  <!--<div>-->
+
+    <!--<ion-list>-->
+      <!--<ion-list-header>-->
+        <!--打折调整-->
+      <!--</ion-list-header>-->
+      <!--<ion-item>-->
+        <!--<ion-range min="50"-->
+                   <!--max="100"-->
+                   <!--pin="true"-->
+                   <!--step="1"-->
+                   <!--(ngModelChange)="tpChange()"-->
+                   <!--[(ngModel)]="contrast"-->
+                   <!--color="secondary">-->
+          <!--<ion-icon range-left small name="contrast"></ion-icon>-->
+          <!--<ion-icon range-right name="contrast"></ion-icon>-->
+        <!--</ion-range>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+
+
+
+    <!--<h1>下面是案例</h1>-->
+
+    <!--<ion-list>-->
+      <!--<ion-list-header>-->
+        <!--Adjust Display-->
+      <!--</ion-list-header>-->
+      <!--<ion-item>-->
+        <!--<ion-range [(ngModel)]="brightness">-->
+          <!--<ion-icon range-left small name="sunny"></ion-icon>-->
+          <!--<ion-icon range-right name="sunny"></ion-icon>-->
+        <!--</ion-range>-->
+      <!--</ion-item>-->
+
+      <!--<ion-item>-->
+        <!--<ion-range dualKnobs="true" pin="true" [(ngModel)]="structure" color="dark">-->
+          <!--<ion-icon range-left small name="brush"></ion-icon>-->
+          <!--<ion-icon range-right name="brush"></ion-icon>-->
+        <!--</ion-range>-->
+      <!--</ion-item>-->
+
+
+      <!--<ion-item>-->
+        <!--<ion-range min="1000" max="2000" step="100" snaps="true" [(ngModel)]="warmth" color="danger">-->
+          <!--<ion-icon range-left small color="danger" name="thermometer"></ion-icon>-->
+          <!--<ion-icon range-right color="danger" name="thermometer"></ion-icon>-->
+        <!--</ion-range>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+
+    <!--<ion-list>-->
+      <!--<ion-list-header>-->
+        <!--Adjust Text-->
+      <!--</ion-list-header>-->
+      <!--<ion-item>-->
+        <!--<ion-range min="-100" step="10" snaps="true" [(ngModel)]="text">-->
+          <!--<ion-label range-left class="small-text">A</ion-label>-->
+          <!--<ion-label range-right>A</ion-label>-->
+        <!--</ion-range>-->
+      <!--</ion-item>-->
+    <!--</ion-list>-->
+  <!--</div>-->
+
+
+
+
+

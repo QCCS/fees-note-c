@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>积分设置</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only
+              *ngIf="point.disabled"
+              (click)="updatePoint(point)">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>消费积分(每消费一元获取的积分数)</ion-label>
+      <ion-input type="number"
+                 [disabled]="point.disabled"
+                 [(ngModel)]="point.consume_score_rate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>推广积分(推荐一名好友消费获取的积分数)</ion-label>
+      <ion-input type="number"
+                 [disabled]="point.disabled"
+                 [(ngModel)]="point.extend_score"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>初始积分(会员卡初始积分)</ion-label>
+      <ion-input type="number"
+                 [disabled]="point.disabled"
+                 [(ngModel)]="point.default_score"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>介绍积分</ion-label>
+      <ion-input type="number"
+                 [disabled]="point.disabled"
+                 [(ngModel)]="point.referral_consume_score"></ion-input>
+    </ion-item>
+    <div padding>
+      <button ion-button full
+              *ngIf="!point.disabled"
+              (click)="savePoint(point)">保存</button>
+    </div>
+
+  </ion-list>
+</ion-content>

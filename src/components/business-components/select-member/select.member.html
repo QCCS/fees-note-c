@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      请选择会员
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <div class="header-fixed">
+    <ion-searchbar (ionInput)="getMemberList($event)"
+                   [(ngModel)]="mobile"
+                   placeholder="输入手机号查找,只显示前20个">
+    </ion-searchbar>
+  </div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <ion-list>
+
+    <ion-item  (click)="confirm(member)" *ngFor="let member of list"  class="member-item">
+      <ion-avatar item-start>
+          <ion-icon name="person"
+                    class="member-icon"></ion-icon>
+      </ion-avatar>
+      <h2>
+        {{member.name}}
+      </h2>
+      <h3>
+        电话：{{member.mobile}} &nbsp;&nbsp;&nbsp;
+      </h3>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+  <ion-footer class="footer-fixed">
+    <ion-toolbar (click)="dismissCancel()">
+      <ion-title class="align-center">
+         取消
+      </ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
+</ion-content>

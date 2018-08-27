@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>账号设置</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="updateAccount()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+  </ion-navbar>
+</ion-header>
+<ion-content >
+
+
+  <div class="image-wrap">
+    <div>
+      <img [src]="account.avatar" onerror="this.src='assets/imgs/logo.png'" />
+    </div>
+  </div>
+
+  <div>
+    <ion-list>
+      <button ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+        店名：{{account.group_name}}
+      </button>
+
+      <button ion-item>
+        <ion-icon name="contact" item-left></ion-icon>
+        姓名：{{account.username}}
+      </button>
+      <button ion-item>
+        <ion-icon name="call" item-left></ion-icon>
+        电话：{{account.mobile}}
+      </button>
+    </ion-list>
+  </div>
+
+  <div padding-top padding>
+    <button ion-button full (click)="logout()">退出</button>
+  </div>
+</ion-content>

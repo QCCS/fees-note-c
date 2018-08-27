@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{title}}会员级别
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label floating>会员基本名</ion-label>
+      <ion-input type="text" [(ngModel)]="member.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>消费金额</ion-label>
+      <ion-input type="number" [(ngModel)]="member.upgrade_money"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>折扣</ion-label>
+      <ion-input type="number" [(ngModel)]="member.discount"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div padding>
+    <button ion-button full (click)="saveMemberLevel()">确定</button>
+    <button ion-button full (click)="cancelMemberLevel()">取消</button>
+
+    <button ion-button full
+            *ngIf="title == '编辑'"
+            (click)="deleteMemberLevel(member)" color="danger">删除此等级</button>
+  </div>
+
+
+
+</ion-content>

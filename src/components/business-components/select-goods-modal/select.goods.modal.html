@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      请选择商品
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <div class="header-fixed">
+    <ion-searchbar (ionInput)="searchItems($event)"
+                   [(ngModel)]="goodsName"
+                   placeholder="输入商品名称">
+    </ion-searchbar>
+  </div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+  <ion-list>
+
+    <ion-item  (click)="selectGoods(good)" *ngFor="let good of list"  class="member-item">
+      <ion-avatar item-start>
+        <img [src]="good.thumb" onerror="this.src='assets/imgs/logo.png'">
+      </ion-avatar>
+      <h2>
+        <ion-icon name="checkmark-circle-outline" *ngIf="good.selected" style="color:green"></ion-icon>
+        {{good.name}}
+      </h2>
+      <h3>
+        售价：{{good.price | yuantofen}} &nbsp;&nbsp;&nbsp;
+      </h3>
+      <p>
+        数量：{{good.count}}&nbsp;&nbsp;&nbsp;
+      </p>
+
+    </ion-item>
+
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="正在加载... ...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </ion-list>
+  <div class="align-center">共：{{total}}</div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+
+
+  <ion-footer class="footer-fixed">
+    <ion-toolbar>
+      <ion-buttons>
+        <button ion-button icon-only (click)="dismissCancel()">
+          <ion-icon name="arrow-dropleft"></ion-icon>
+          取消
+        </button>
+      </ion-buttons>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="dismiss()">
+          确定
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+
+
+</ion-content>

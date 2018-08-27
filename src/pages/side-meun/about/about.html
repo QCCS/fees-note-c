@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>关于</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content >
+  <div class="image-wrap">
+    <div>
+      <img src="assets/imgs/logo.png" />
+    </div>
+    <div class="align-center">
+      版本号：0.0.1
+    </div>
+  </div>
+
+  <div>
+    <ion-list>
+      <button ion-item (click)="openBrowervip()">
+        <ion-icon name="document" item-left></ion-icon>
+        用户协议
+      </button>
+      <button ion-item (click)="serviceRule()">
+        <ion-icon name="clipboard" item-left></ion-icon>
+        服务条款
+      </button>
+      <button ion-item (click)="call119()">
+        <ion-icon name="call" item-left></ion-icon>
+        客服119
+      </button>
+      <button ion-item (click)="checkVerson()">
+        <ion-icon name="hammer" item-left></ion-icon>
+        版本检测
+      </button>
+
+      <button ion-item (click)="openBrower()">
+        <ion-icon name="logo-chrome" item-left></ion-icon>
+        访问网站
+      </button>
+      <button ion-item (click)="els()">
+        <ion-icon name="game-controller-b" item-left></ion-icon>
+        开心一刻
+      </button>
+    </ion-list>
+
+  </div>
+
+</ion-content>

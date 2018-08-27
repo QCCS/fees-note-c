@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>我的订单</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+
+    <ion-item-sliding (click)="goToOrderDetail(order)"
+                      *ngFor="let order of list"
+                      class="member-item">
+      <ion-item>
+        <ion-avatar item-start>
+          <ion-icon *ngIf="order.state == 0"
+                    name="clipboard"
+                    class="state1-icon"></ion-icon>
+          <ion-icon *ngIf="order.state == 1"
+                    name="clipboard"
+                    class="state2-icon"></ion-icon>
+        </ion-avatar>
+        <h2 *ngIf="order.state == 0">状态：未支付</h2>
+        <h2 *ngIf="order.state == 1">状态：已支付</h2>
+        <h3>
+          价格：{{order.total_price}} &nbsp;&nbsp;&nbsp;
+        </h3>
+        <p>
+          支付金额：{{order.receive_money}}
+        </p>
+        <p>
+          创建时间：{{order.create_time | date:"yyyy-mm-dd HH:mm:ss"}}&nbsp;&nbsp;&nbsp;
+        </p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="$event.stopPropagation();deleteOrder(order)">
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="正在加载... ...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+
+  </ion-list>
+  <div class="align-center">共：{{total}}</div>
+
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+  <div padding-top></div>
+</ion-content>

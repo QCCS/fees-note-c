@@ -1,0 +1,247 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>我的业绩</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="during">
+      <ion-segment-button value="day">
+        日
+      </ion-segment-button>
+      <ion-segment-button value="week">
+        周
+      </ion-segment-button>
+      <ion-segment-button value="month">
+        月
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <div >
+    <div [ngSwitch]="during">
+
+      <ion-list *ngSwitchCase="'day'">
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 业绩总览（今天） </div>
+            </ion-card-header>
+
+            <ion-list>
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>销售总额</h2>
+                <span item-end class="for-text">{{dayAchieve.receive_money}}元</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>销售商品</h2>
+                <span item-end class="for-text">{{dayAchieve.order_count}}个</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>提成</h2>
+                <span item-end class="for-text">{{dayAchieve.deduct}}元</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>办理会员</h2>
+                <span item-end class="for-text">{{dayAchieve.member_count}}人</span>
+              </button>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 图表显示</div>
+            </ion-card-header>
+
+            <ion-list>
+              <div echarts [options]="dayOptionLine" class="demo-chart"></div>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 图表显示</div>
+            </ion-card-header>
+
+            <ion-list>
+              <div echarts [options]="dayOption" class="demo-chart"></div>
+            </ion-list>
+          </ion-card>
+        </div>
+
+      </ion-list>
+
+
+
+      <ion-list *ngSwitchCase="'week'">
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 业绩总览 (本周)</div>
+            </ion-card-header>
+
+            <ion-list>
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>销售总额</h2>
+                <span item-end class="for-text">{{weekAchieve.receive_money}}元</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>销售商品</h2>
+                <span item-end class="for-text">{{weekAchieve.order_count}}个</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>提成</h2>
+                <span item-end class="for-text">{{weekAchieve.deduct}}元</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>办理会员</h2>
+                <span item-end class="for-text">{{weekAchieve.member_count}}人</span>
+              </button>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 图表显示</div>
+            </ion-card-header>
+
+            <ion-list>
+              <div echarts [options]="weekOptionLine" class="demo-chart"></div>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 图表显示</div>
+            </ion-card-header>
+            <ion-list>
+              <div echarts [options]="weekOption" class="demo-chart"></div>
+            </ion-list>
+          </ion-card>
+        </div>
+
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'month'">
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 业绩总览(本月) </div>
+            </ion-card-header>
+
+            <ion-list>
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>销售总额</h2>
+                <span item-end class="for-text">{{monthAchieve.receive_money}}元</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>销售商品</h2>
+                <span item-end class="for-text">{{monthAchieve.order_count}}个</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>提成</h2>
+                <span item-end class="for-text">{{monthAchieve.deduct}}元</span>
+              </button>
+
+              <button ion-item>
+                <ion-icon name="logo-bitcoin" item-start></ion-icon>
+                <h2>办理会员</h2>
+                <span item-end class="for-text">{{monthAchieve.member_count}}人</span>
+              </button>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 图表显示</div>
+            </ion-card-header>
+
+            <ion-list>
+              <div echarts [options]="monthOptionLine" class="demo-chart"></div>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card>
+            <ion-card-header>
+              <div> 图表显示</div>
+            </ion-card-header>
+            <ion-list>
+              <div echarts [options]="monthOption" class="demo-chart"></div>
+            </ion-list>
+          </ion-card>
+        </div>
+      </ion-list>
+    </div>
+  </div>
+
+  <div padding-top>
+ </div>
+
+</ion-content>
+
+<!--<div>-->
+<!--<ion-card (click)="goToGoodsDetail()" >-->
+<!--<ion-item>-->
+<!--<ion-avatar item-start>-->
+<!--<img src="assets/imgs/logo.png">-->
+<!--</ion-avatar>-->
+<!--<h2>艾萨</h2>-->
+<!--<h3>Don't Know What To Do!</h3>-->
+<!--<p>I've had a pretty messed up day. If we just...</p>-->
+<!--</ion-item>-->
+<!--</ion-card>-->
+<!--<ion-card (click)="goToGoodsDetail()" >-->
+<!--<ion-item>-->
+<!--<ion-avatar item-start>-->
+<!--<img src="assets/imgs/logo.png">-->
+<!--</ion-avatar>-->
+<!--<h2>啊是啊</h2>-->
+<!--<h3>Don't Know What To Do!</h3>-->
+<!--<p>I've had a pretty messed up day. If we just...</p>-->
+<!--</ion-item>-->
+<!--</ion-card>-->
+
+<!--<ion-card (click)="goToGoodsDetail()" >-->
+<!--<ion-item>-->
+<!--<ion-avatar item-start>-->
+<!--<img src="assets/imgs/logo.png">-->
+<!--</ion-avatar>-->
+<!--<h2>fv爱迪生</h2>-->
+<!--<h3>Don't Know What To Do!</h3>-->
+<!--<p>I've had a pretty messed up day. If we just...</p>-->
+<!--</ion-item>-->
+<!--</ion-card>-->
+<!--</div>-->
+<!--<h2>图表分析</h2>-->
+<!--<div echarts [options]="chartOption" class="demo-chart"></div>-->
+<!--<div echarts [options]="chartOption2" [dataset]="dataset" class="demo-chart"></div>-->
+<!--<div echarts [options]="chartOption3" [loading]="chartLoading" class="demo-chart"></div>-->
